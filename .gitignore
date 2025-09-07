@@ -1,1 +1,7 @@
 .DS_Store
+.config/configstore/
+.config/exercism/
+.config/gcloud/
+.config/gh-copilot/
+.config/gh/
+.config/github-copilot/
