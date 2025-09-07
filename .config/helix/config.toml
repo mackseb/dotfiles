@@ -1,0 +1,22 @@
+theme = "catppuccin_latte_transparent"
+
+[editor]
+line-number = "relative"
+rulers = [120]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
+wrap-indicator = ""  # set wrap-indicator to "" to hide it
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
