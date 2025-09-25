@@ -13,10 +13,65 @@ select = "underline"
 enable = true
 max-wrap = 25 # increase value to reduce forced mid-word wrapping
 max-indent-retain = 0
-wrap-indicator = ""  # set wrap-indicator to "" to hide it
 
 [editor.file-picker]
 hidden = false
 
 [editor.indent-guides]
 render = true
+
+[keys.normal]
+"C-s" = ":write" 
+"C-t" = "save_selection" # Save the current selection to the jumplist
+"C-k" = "expand_selection"
+"C-j" = "shrink_selection"
+"C-h" = "select_prev_sibling"
+"C-l" = "select_next_sibling"
+
+[keys.normal.space]
+"l" = "toggle_line_comments"
+# Search
+"*" = "search_selection"
+
+# create a new minor mode bound to `<` as a temp replacement for alt key
+[keys.normal."<"]
+# Shell
+"|" = "shell_pipe_to"
+"!" = "shell_append_output"
+# Movement
+"." = "repeat_last_motion"
+# Selection
+"s" = "split_selection_on_newline"
+"-" = "merge_selections"
+"_" = "merge_consecutive_selections"
+";" = "flip_selections"
+":" = "ensure_selections_forward"
+"," = "remove_primary_selection"
+"C" = "copy_selection_on_prev_line"
+"(" = "rotate_selection_contents_backward"
+")" = "rotate_selection_contents_forward"
+"x" = "shrink_to_line_bounds"
+"J" = "join_selections_space"
+"K" = "remove_selections"
+"a" = "select_all_siblings"
+"I" = "select_all_children"
+"e" = "move_parent_node_end"
+"b" = "move_parent_node_start"
+# Changes
+"d" = "delete_selection_noyank"  
+"c" = "change_selection_noyank"  
+"´" = "switch_to_uppercase"
+"u" = "earlier"
+"U" = "later"
+
+
+[keys.insert]
+"C-s" = ":write" # overwrites jumplist to check
+# up = "no_op"
+# down = "no_op"
+# left = "no_op"
+# right = "no_op"
+# pageup = "no_op"
+# pagedown = "no_op"
+# home = "no_op"
+# end = "no_op"
