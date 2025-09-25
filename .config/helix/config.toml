@@ -27,6 +27,8 @@ render = true
 "C-j" = "shrink_selection"
 "C-h" = "select_prev_sibling"
 "C-l" = "select_next_sibling"
+"C-d" = ["page_cursor_half_down", "goto_window_center"]
+"C-u" = ["page_cursor_half_up", "goto_window_center"]
 
 [keys.normal.space]
 "l" = "toggle_line_comments"
