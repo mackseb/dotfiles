@@ -3,6 +3,7 @@ theme = "catppuccin_latte_transparent"
 [editor]
 line-number = "relative"
 rulers = [120]
+end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -20,6 +21,9 @@ hidden = false
 [editor.indent-guides]
 render = true
 
+[editor.inline-diagnostics]
+cursor-line = "warning" # show warnings and errors on the cursorline inline
+
 [keys.normal]
 "C-s" = ":write" 
 "C-t" = "save_selection" # Save the current selection to the jumplist
@@ -29,19 +33,20 @@ render = true
 "C-l" = "select_next_sibling"
 "C-d" = ["page_cursor_half_down", "goto_window_center"]
 "C-u" = ["page_cursor_half_up", "goto_window_center"]
+"C-z" = "repeat_last_motion"
+"C-g" = ":reset-diff-change"
 
 [keys.normal.space]
 "l" = "toggle_line_comments"
+"A-c" = "no_op"
 # Search
 "*" = "search_selection"
 
-# create a new minor mode bound to `<` as a temp replacement for alt key
-[keys.normal."<"]
+# create a new minor mode bound to `+` as a temp replacement for alt key
+[keys.normal."+"]
 # Shell
 "|" = "shell_pipe_to"
 "!" = "shell_append_output"
-# Movement
-"." = "repeat_last_motion"
 # Selection
 "s" = "split_selection_on_newline"
 "-" = "merge_selections"
