@@ -1,0 +1,400 @@
+# Place a copy of this config to ~/.aerospace.toml
+# After that, you can edit ~/.aerospace.toml to your liking
+
+# You can use it to add commands that run after AeroSpace startup.
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+after-startup-command = []
+
+# Start AeroSpace at login
+start-at-login = true
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# The 'accordion-padding' specifies the size of accordion padding
+# You can set 0 to disable the padding feature
+accordion-padding = 10
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'accordion'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'horizontal'
+
+# Mouse follows focus when focused monitor changes
+# Drop it from your config, if you don't like this behavior
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# Fallback value (if you omit the key): on-focused-monitor-changed = []
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = true
+
+# Possible values: (qwerty|dvorak|colemak)
+# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
+[key-mapping]
+    preset = 'qwerty'
+
+# Gaps between windows (inner-*) and between monitor edges (outer-*).
+# Possible values:
+# - Constant:     gaps.outer.top = 8
+# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                 In this example, 24 is a default value when there is no match.
+#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
+#                 See:
+#                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+[gaps]
+    inner.horizontal = 5
+    inner.vertical =   5
+    outer.left =       7
+    outer.bottom =     13
+    outer.top =        7
+    outer.right =      7
+
+# 'main' binding mode declaration
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# 'main' binding mode must be always presented
+# Fallback value (if you omit the key): mode.main.binding = {}
+[mode.main.binding]
+
+    # All possible keys:
+    # - Letters.        a, b, c, ..., z
+    # - Numbers.        0, 1, 2, ..., 9
+    # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+    # - F-keys.         f1, f2, ..., f20
+    # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+    #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+    #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+    #                   sectionSign (ISO keyboards only, european keyboards only)
+    # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+    #                   keypadMinus, keypadMultiply, keypadPlus
+    # - Arrows.         left, down, up, right
+
+    # All possible modifiers: cmd, alt, ctrl, shift
+
+    # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
+    # You can uncomment the following lines to open up terminal with alt + enter shortcut
+    # (like in i3)
+    # alt-enter = '''exec-and-forget osascript -e '
+    # tell application "Terminal"
+    #     do script
+    #     activate
+    # end tell'
+    # '''
+
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#focus
+    cmd-alt-ctrl-h = 'focus left'
+    cmd-alt-ctrl-j = 'focus down'
+    cmd-alt-ctrl-k = 'focus up'
+    cmd-alt-ctrl-l = 'focus right'
+
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+    cmd-alt-ctrl-1 = 'workspace 1'
+    cmd-alt-ctrl-2 = 'workspace 2'
+    cmd-alt-ctrl-3 = 'workspace 3'
+    cmd-alt-ctrl-4 = 'workspace 4'
+    cmd-alt-ctrl-5 = 'workspace 5'
+    cmd-alt-ctrl-6 = 'workspace 6'
+    cmd-alt-ctrl-7 = 'workspace 7'
+    cmd-alt-ctrl-8 = 'workspace 8'
+    cmd-alt-ctrl-9 = 'workspace 9'
+    cmd-alt-ctrl-0 = 'workspace 0'
+    cmd-alt-ctrl-b = 'workspace B'
+
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+    alt-tab = 'workspace-back-and-forth'
+    # Sattps://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    # change to 
+    cmd-alt-ctrl-m = 'mode move'
+    
+[mode.move.binding]
+    esc = ['reload-config', 'mode main']         
+    comma = ['reload-config', 'mode main']         
+    n = 'resize smart -50'
+    m = 'resize smart +50'
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+     r = ['flatten-workspace-tree', 'mode main'] # reset layout
+     f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+
+    shift-h = 'join-with left'
+    shift-j = 'join-with down'
+    shift-k = 'join-with up'
+    shift-l = 'join-with right'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#layout
+     t = 'layout tiles horizontal vertical'
+     a = 'layout accordion horizontal vertical'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move
+    h = 'move left'
+    j = 'move down'
+    k = 'move up'
+    l = 'move right'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    1 = 'move-node-to-workspace 1'
+    2 = 'move-node-to-workspace 2'
+    3 = 'move-node-to-workspace 3'
+    4 = 'move-node-to-workspace 4'
+    5 = 'move-node-to-workspace 5'
+    6 = 'move-node-to-workspace 6'
+    7 = 'move-node-to-workspace 7'
+    8 = 'move-node-to-workspace 8'
+    9 = 'move-node-to-workspace 9'
+    0 = 'move-node-to-workspace 0'
+    b = 'move-node-to-workspace B'
+
+# in oder to get app ids: "aerospace list-apps"
+# WORKSPACE 1
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = 'move-node-to-workspace 1' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Photos'
+    run = 'move-node-to-workspace 1' 
+
+# WORKSPACE 2 - Browser and Agents
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari'
+    run = 'move-node-to-workspace 2' 
+
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace 2' 
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.edgemac'
+    run = 'move-node-to-workspace 2' 
+
+[[on-window-detected]]
+    if.app-id = 'org.mozilla.firefox'
+    run = 'move-node-to-workspace 2' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari.WebApp.2277C995-3E5D-4F36-8B56-C6D524006035' # Chatgpt
+    run = 'move-node-to-workspace 2' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari.WebApp.DAC8954B-F3E9-4A39-A3F9-253EEADBD6A2' # Google Gemini
+    run = 'move-node-to-workspace 2' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari.WebApp.6DF5971E-4E97-46EB-8C4C-E06F967122AA' # Claude
+    run = 'move-node-to-workspace 2' 
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.copilot-mac'
+    run = 'move-node-to-workspace 2' 
+
+[[on-window-detected]]
+    if.app-id = 'ai.perplexity.mac'
+    run = 'move-node-to-workspace 2' 
+
+[[on-window-detected]]
+    if.app-id = 'ai.perplexity.comet'
+    run = 'move-node-to-workspace 2' 
+
+# WORKSPACE 3 - Social
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.Outlook'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.teams2'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari.WebApp.E87F0CA7-077D-460E-8F55-0E9FBA8743D4' # Jira
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari.WebApp.136E8B31-A081-40BE-B0DE-FDDF6F93ACC8' # Confluence
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.mail'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.iCal'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.reminders'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.AddressBook'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.mobilephone' # Phone
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.MobileSMS' # Messages
+    run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.FaceTime'
+    run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+    if.app-id = 'net.whatsapp.WhatsApp'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'org.whispersystems.signal-desktop'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.hnc.Discord'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'Mattermost.Desktop'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'us.zoom.xos'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'Cisco-Systems.Spark'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
+    if.app-id = 'com.teamviewer.TeamViewer'
+    run = 'move-node-to-workspace 3' 
+
+# WORKSPACE 4 - Office stuff
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.Word'
+    run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.Excel'
+    run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.Powerpoint'
+    run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.onenote.mac'
+    run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.m365copilot'
+    run = 'move-node-to-workspace 4'
+
+# WORKSPACE 5 - media and games
+[[on-window-detected]]
+    if.app-id = 'com.apple.iBooksX'
+    run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.TV'
+    run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Music'
+    run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.podcasts'
+    run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.QuickTimePlayerX'
+    run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.games'
+    run = 'move-node-to-workspace 5'
+
+# WORKSPACE 6 - creative
+[[on-window-detected]]
+    if.app-id = 'com.lemon.lvoverseas' # CapCut
+    run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+    if.app-id = 'co.polarr.ppeosx.lite'
+    run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+    if.app-id = 'com.obsproject.obs-studio'
+    run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+    if.app-id = 'com.design.spline'
+    run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari.WebApp.9AF22F95-8FA7-446E-804B-4F8B592F1750' # Mural
+    run = 'move-node-to-workspace 6'
+
+# WORKSPACE 9 - digital brain
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    run = 'move-node-to-workspace 9'
+
+# WORKSPACE 0 - coding
+[[on-window-detected]]
+    if.app-id = 'com.apple.Terminal'
+    run = 'move-node-to-workspace 0' 
+
+[[on-window-detected]]
+    if.app-id = 'dev.warp.Warp-Stable'
+    run = 'move-node-to-workspace 0' 
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.VSCode'
+    run = 'move-node-to-workspace 0' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.dt.Xcode'
+    run = 'move-node-to-workspace 0' 
+
+[[on-window-detected]]
+    if.app-id = 'com.postmanlabs.mac'
+    run = 'move-node-to-workspace 0' 
+
+[[on-window-detected]]
+    if.app-id = 'com.github.GitHubClient'
+    run = 'move-node-to-workspace 0' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari.WebApp.B1322C15-23E9-4D73-99E6-32014903EBF7' # Github
+    run = 'move-node-to-workspace 0' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari.WebApp.F591CB88-B63B-4486-85C3-34896DEF133B' # Github Enterprise
+    run = 'move-node-to-workspace 0'
+     
+[[on-window-detected]]
+    if.app-id = 'com.electron.dockerdesktop'
+    run = 'move-node-to-workspace 0' 
+
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome.app.odnhbcafddeonoghgoinaoejndkphjeo' # Google Cloud Console
+    run = 'move-node-to-workspace 0' 
+
+# WORKSPACE B
+[[on-window-detected]]
+    run = 'move-node-to-workspace B' 
