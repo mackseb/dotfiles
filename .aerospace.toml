@@ -158,6 +158,9 @@ automatically-unhide-macos-hidden-apps = true
     0 = 'move-node-to-workspace 0'
     b = 'move-node-to-workspace B'
 
+[workspace-to-monitor-force-assignment]
+    B = 'secondary'                  # Non-main monitor in case when there are only two monitors
+
 # in oder to get app ids: "aerospace list-apps"
 # WORKSPACE 1
 [[on-window-detected]]
