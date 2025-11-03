@@ -242,6 +242,10 @@ automatically-unhide-macos-hidden-apps = true
     run = 'move-node-to-workspace 3' 
 
 [[on-window-detected]]
+    if.app-id = 'com.microsoft.to-do-mac'
+    run = 'move-node-to-workspace 3' 
+
+[[on-window-detected]]
     if.app-id = 'com.apple.AddressBook'
     run = 'move-node-to-workspace 3' 
 
