@@ -352,11 +352,6 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'com.apple.Safari.WebApp.9AF22F95-8FA7-446E-804B-4F8B592F1750' # Mural
     run = 'move-node-to-workspace 6'
 
-# WORKSPACE 9 - digital brain
-[[on-window-detected]]
-    if.app-id = 'md.obsidian'
-    run = 'move-node-to-workspace 9'
-
 # WORKSPACE 0 - coding
 [[on-window-detected]]
     if.app-id = 'com.apple.Terminal'
@@ -387,7 +382,7 @@ automatically-unhide-macos-hidden-apps = true
     run = 'move-node-to-workspace 0' 
 
 [[on-window-detected]]
-    if.app-id = 'com.apple.Safari.WebApp.F591CB88-B63B-4486-85C3-34896DEF133B' # Github Enterprise
+    if.app-id = 'com.apple.Safari.WebApp.80B16267-2A64-41B1-8D73-10140D5C1F83' # Github Enterprise
     run = 'move-node-to-workspace 0'
      
 [[on-window-detected]]
