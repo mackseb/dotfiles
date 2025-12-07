@@ -8,6 +8,8 @@ source <(fzf --zsh)
 
 alias y="yazi"
 
+# alias s="spf -c ~/.config/superfile/config.toml"
+
 alias brew-export='brew bundle dump --file=~/dotfiles/Brewfile --force'
 alias brew-sync='brew bundle --file=~/dotfiles/Brewfile'
 
@@ -15,3 +17,10 @@ alias brew-sync='brew bundle --file=~/dotfiles/Brewfile'
 alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias ltree="eza --tree --level=2  --icons --git"
+
+# bun completions
+[ -s "/Users/MACKSEB/.bun/_bun" ] && source "/Users/MACKSEB/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

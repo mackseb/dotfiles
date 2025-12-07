@@ -1,0 +1,41 @@
+[include]
+	path = ~/.config/delta/themes/catppuccin.gitconfig
+
+[filter "lfs"]
+	process = git-lfs filter-process~~µ
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[user]
+	name = SEBASTIAN MACK
+	email = mack.seb@gmail.com
+[credential "https://git.i.mercedes-benz.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[core]
+	excludesfile = /Users/MACKSEB/.gitignore_global
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    line-numbers = true
+	hyperlinks = true
+	side-by-side = true
+	true-color = always
+	features = catppuccin-latte
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+
+[merge]
+    conflictStyle = zdiff3
+
